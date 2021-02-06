@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: client-mtls
+server:
+  port: 8431
+  ssl:
+    enabled: true
+    client-auth: need
+    key-store: classpath:identity.jks
+    key-store-password: secret
+    key-alias: client
+    key-store-type: JKS
+    key-store-provider: SUN
+    trust-store: classpath:truststore.jks
+    trust-store-password: secret
+    trust-store-type: JKS
+
+---
+server:
+  base-url: https://localhost:8432
+  endpoint: /verify-connection
